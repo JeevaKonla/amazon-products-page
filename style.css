@@ -1,0 +1,38 @@
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+}
+
+#search {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 300px;
+}
+
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+}

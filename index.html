@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Products</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>My Amazon Recommendations</h1>
+    <input type="text" id="search" placeholder="Search products..." onkeyup="filterProducts()">
+    <div id="product-list"></div>
+
+    <script>
+        async function loadProducts() {
+            const res = await fetch('products.json');
+            const products = await res.json();
+            const container = document.getElementById('product-list');
+            container.innerHTML = products.map(p => `
+                <div class="product">
+                    <img src="${p.image}" alt="${p.name}" />
+                    <h3>${p.name}</h3>
+                    <p>${p.description}</p>
+                    <a href="${p.link}" target="_blank">View on Amazon</a>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const items = document.querySelectorAll('.product');
+            items.forEach(item => {
+                const match = item.innerText.toLowerCase().includes(query);
+                item.style.display = match ? 'block' : 'none';
+            });
+        }
+
+        loadProducts();
+    </script>
+</body>
+</html>
